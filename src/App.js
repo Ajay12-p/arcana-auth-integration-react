@@ -95,21 +95,20 @@ function App() {
               <button className='big-button' onClick={() => login('twitter')}>
                 Twitter Login
               </button>
-              <div className='form'>
-                <input
-                  value={email}
-                  type='text'
-                  placeholder='Enter email'
-                  className='form--input'
-                  onChange={handleEmailChange}
-                />
-                <button
-                  className='big-button'
-                  onClick={() => loginWithLink(email)}
-                >
-                  Login with link
-                </button>
-              </div>
+            </div>
+            <div className='form'>
+              <input
+                value={email}
+                type='text'
+                placeholder='Enter email'
+                onChange={handleEmailChange}
+              />
+              <button
+                className='big-button'
+                onClick={() => loginWithLink(email)}
+              >
+                Login with link
+              </button>
             </div>
           </div>
         )}
