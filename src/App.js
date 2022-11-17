@@ -6,13 +6,12 @@ import useArcanaAuth from './useArcanaAuth';
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [email, setEmail] = useState('');
-  const [account, setAccount] = useState('');
+  const [email, setEmail] = useState("");
+  const [account, setAccount] = useState("");
 
   const {
     initializeAuth,
-    isLoggedIn,
+    loggedIn,
     getAccounts,
     login,
     loginWithLink,
@@ -25,7 +24,6 @@ function App() {
   };
 
   const handleLogout = async () => {
-    setLoggedIn(false);
     await logout();
   };
 
@@ -36,9 +34,7 @@ function App() {
   useEffect(() => {
     const loadDetails = async () => {
       if (initialized) {
-        const isLogged = await isLoggedIn();
-        if (isLogged) {
-          setLoggedIn(true);
+        if (loggedIn) {
           const acc = await getAccounts();
           setAccount(acc[0]);
           setLoading(false);
@@ -48,7 +44,7 @@ function App() {
       }
     };
     loadDetails();
-  }, [initialized]);
+  }, [initialized, loggedIn]);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
